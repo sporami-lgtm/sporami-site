@@ -35,10 +35,6 @@ function rel(){var t=+$("tot").value,h=+$("hon").value;if(h>t){h=t;$("hon").valu
  $("ring").style.setProperty("--p",p||0);
  $("rTxt").innerHTML=p===null?"Nouveau<small>pas encore de séance</small>":p+" %<small>fiable</small>"}
 $("tot").oninput=rel;$("hon").oninput=rel;rel();
-/* confiance */
-var tr=[["Lieu public","Toute séance est créée dans un lieu public, confirmé comme tel par l'organisateur."],["Signaler et bloquer","Tu peux signaler un message ou une personne et bloquer un utilisateur : tu ne vois plus ses messages ni ses séances."],["Modération sous 24 h","Chaque signalement est examiné sous 24 heures. Le contenu en cause est retiré et son auteur peut être exclu."],["Tes données","Aucune publicité, aucune revente. Ta position n'est pas enregistrée et ton e-mail n'est jamais visible."]];
-var tb=$("trust");tr.forEach(function(x,i){var b=document.createElement("button");b.className="tab";b.type="button";b.textContent=x[0];b.onclick=function(){trs(i)};tb.appendChild(b)});
-function trs(n){[].forEach.call(tb.children,function(c,i){c.setAttribute("aria-selected",i===n)});$("trustTxt").innerHTML="<h3>"+tr[n][0]+"</h3><p>"+tr[n][1]+"</p>"}trs(0);
 /* apparition douce */
 var els=document.querySelectorAll(".rv");
 if("IntersectionObserver" in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});els.forEach(function(e){io.observe(e)})}else els.forEach(function(e){e.classList.add("in")});
