@@ -2,61 +2,66 @@
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>SPORAMI – Fais du sport à plusieurs</title>
 <meta name="description" content="SPORAMI : rejoins ou organise des séances de sport, en séance mystère, entre amis ou en club. Gratuit, sur iPhone.">
-<meta name="theme-color" content="#0046E6"><link rel="icon" href="/favicon.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#FBFBFD"><link rel="icon" href="/favicon.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/home.css"></head>
 <body class="home">
-<header class="top"><a class="brand" href="/"><img src="/icon.png" alt="" width="36" height="36"><span>SPORAMI</span></a>
-<nav><a href="#fonctionnement">Comment ça marche</a><a href="#fiabilite">Fiabilité</a><a href="#faq">Questions</a><a href="/support.html">Support</a></nav></header>
+<header class="top"><a class="brand" href="/"><img src="/icon.png" alt="" width="30" height="30"><span>SPORAMI</span></a>
+<nav><a href="#fonctionnement">Fonctionnement</a><a href="#fiabilite">Fiabilité</a><a href="#confiance">Confiance</a><a href="#faq">Questions</a></nav></header>
 <main>
 <section class="hero">
-<div>
-<h1>Fais du sport à plusieurs.</h1>
-<p class="lead">Rejoins une séance près de chez toi, organise la tienne, ou lance une séance mystère : tu ne connais l'équipe qu'en arrivant. Gratuit, sans publicité.</p>
-<div class="cta-row"><span class="btn soon">Bientôt sur l'App Store</span><a class="btn ghost" href="#fonctionnement">Voir comment ça marche</a></div>
-</div>
-<div class="phone" aria-label="Démo interactive d'une séance mystère"><div class="screen">
-<h3>Essaie : crée ta séance mystère</h3>
-<div class="chips" id="sports" role="group" aria-label="Sport"></div>
-<div class="chips" id="levels" role="group" aria-label="Niveau"></div>
-<div class="drop" aria-live="polite">
-<div class="drop-top"><span id="dTitle">Padel</span><span class="badge">Mystère</span></div>
-<small id="dSub" style="color:var(--muted)">Niveau intermédiaire</small>
-<div class="who"><span class="av" id="av1">1</span><div><b id="n1">Participant</b><small>Intermédiaire · Nouveau</small></div></div>
-<div class="who"><span class="av" id="av2">2</span><div><b id="n2">Participant</b><small>Intermédiaire · Nouveau</small></div></div>
-<p class="hint" id="hint">Tu vois le niveau et la fiabilité des autres, jamais leur prénom.</p>
-</div>
-<button class="btn reveal" id="reveal" type="button">Rejoindre la séance</button>
-</div></div>
+<p class="kicker">Sport · Rencontres · Confiance</p>
+<h1>Le sport,<br>mieux à plusieurs.</h1>
+<p class="lead">Rejoins une séance près de chez toi, organise la tienne, ou lance une séance mystère : tu ne connais l'équipe qu'en arrivant.</p>
+<div class="cta-row"><span class="btn dark">Bientôt sur l'App Store</span><a class="link" href="#fonctionnement">Découvrir</a></div>
+<div class="stage"><img class="hero-logo" id="heroLogo" src="/hero-logo.png" alt="Logo SPORAMI : deux mains qui se serrent" width="400" height="400"></div>
 </section>
 
 <section class="sec rv" id="fonctionnement">
-<h2>Du canapé au terrain.</h2>
+<h2>Simple comme un rendez-vous.</h2>
 <p class="sub">Touche une étape pour voir ce qui se passe dans l'app.</p>
 <div class="tabs" role="tablist" id="tabs"></div>
 <div id="panels"></div>
 </section>
 
 <section class="sec rv" id="fiabilite">
-<div class="rel">
-<div>
-<h2>Une fiabilité qui se mérite.</h2>
-<p class="sub">Chaque sportif a un score basé sur les séances auxquelles il est venu. Un nouveau n'a pas de score : il est simplement « Nouveau ». Bouge les curseurs.</p>
-<label>Séances prévues : <b id="vTot">0</b><input id="tot" type="range" min="0" max="20" value="0"></label>
-<label>Séances honorées : <b id="vHon">0</b><input id="hon" type="range" min="0" max="20" value="0"></label>
+<div class="bento">
+<div class="card night">
+<h3 class="eyebrow">Séance mystère</h3>
+<p class="big">Essaie-la ici.</p>
+<div class="phone"><div class="screen">
+<div class="chips" id="sports" role="group" aria-label="Sport"></div>
+<div class="chips" id="levels" role="group" aria-label="Niveau"></div>
+<div class="drop" aria-live="polite">
+<div class="drop-top"><span id="dTitle">Padel</span><span class="badge">Mystère</span></div>
+<small id="dSub" style="color:#6B7280">Niveau intermédiaire</small>
+<div class="who"><span class="av" id="av1">1</span><div><b id="n1">Participant</b><small>Intermédiaire · Nouveau</small></div></div>
+<div class="who"><span class="av" id="av2">2</span><div><b id="n2">Participant</b><small>Intermédiaire · Nouveau</small></div></div>
+<p class="hint" id="hint"></p>
 </div>
+<button class="btn" id="reveal" type="button">Rejoindre la séance</button>
+</div></div>
+</div>
+<div class="card pearl">
+<h3 class="eyebrow">Fiabilité</h3>
+<p class="big">Un score qui se mérite.</p>
+<p class="muted">Un nouveau est simplement « Nouveau ». Bouge les curseurs.</p>
 <div class="ring" id="ring" style="--p:0" role="img" aria-label="Score de fiabilité"><div><span id="rTxt">Nouveau<small>pas encore de séance</small></span></div></div>
+<label>Séances prévues <b id="vTot">0</b><input id="tot" type="range" min="0" max="20" value="0"></label>
+<label>Séances honorées <b id="vHon">0</b><input id="hon" type="range" min="0" max="20" value="0"></label>
+</div>
 </div>
 </section>
 
-<section class="sec rv">
-<h2>Pensé pour la confiance.</h2>
-<p class="sub">Aucune rencontre ne se fait dans le noir : les règles sont posées avant la première séance.</p>
+<section class="sec rv" id="confiance">
+<h2>Aucune rencontre<br>dans le noir.</h2>
+<p class="sub">Les règles sont posées avant la première séance.</p>
 <div class="grid4">
 <div class="tile"><i></i><h3>Lieu public</h3><p>Toute séance est créée dans un lieu public, confirmé comme tel par l'organisateur.</p></div>
-<div class="tile"><i></i><h3>Signaler et bloquer</h3><p>Tu signales un message ou une personne, et tu bloques un utilisateur : tu ne vois plus ses messages ni ses séances.</p></div>
+<div class="tile"><i></i><h3>Signaler et bloquer</h3><p>Tu signales un message ou une personne et tu bloques un utilisateur : tu ne vois plus ses messages ni ses séances.</p></div>
 <div class="tile"><i></i><h3>Modération sous 24 h</h3><p>Chaque signalement est examiné sous 24 heures. Le contenu est retiré et son auteur peut être exclu.</p></div>
 <div class="tile"><i></i><h3>Tes données</h3><p>Aucune publicité, aucune revente. Ta position n'est pas enregistrée, ton e-mail n'est jamais visible.</p></div>
-</div></section>
+</div>
+</section>
 
 <section class="sec rv" id="faq">
 <h2>Questions fréquentes.</h2>
