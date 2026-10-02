@@ -1,81 +1,232 @@
 <!doctype html>
-<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SPORAMI – Fais du sport à plusieurs</title>
-<meta name="description" content="SPORAMI : rejoins ou organise des séances de sport, en séance mystère, entre amis ou en club. Gratuit, sur iPhone.">
-<meta name="theme-color" content="#FBFBFD"><link rel="icon" href="/favicon.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/home.css"></head>
-<body class="home">
-<header class="top"><a class="brand" href="/"><img src="/icon.png" alt="" width="30" height="30"><span>SPORAMI</span></a>
-<nav><a href="#fonctionnement">Fonctionnement</a><a href="#fiabilite">Fiabilité</a><a href="#confiance">Confiance</a><a href="#faq">Questions</a></nav></header>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SPORAMI – Le sport crée la rencontre</title>
+<meta name="description" content="SPORAMI : rejoins ou organise des séances de sport près de chez toi. Lance un Sport Drop et découvre ton équipe sur place, ou joue avec ton club et tes amis. Gratuit, sur iPhone.">
+<meta name="theme-color" content="#030720">
+<meta property="og:title" content="SPORAMI – Le sport crée la rencontre">
+<meta property="og:description" content="Rejoins ou organise des séances de sport près de chez toi. Gratuit, sur iPhone.">
+<meta property="og:image" content="https://sporami.app/icon.png">
+<meta property="og:url" content="https://sporami.app/">
+<link rel="icon" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" as="image" href="/hero-logo.webp">
+<link rel="stylesheet" href="/home.css">
+</head>
+<body>
+<div class="aura" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="spot" id="spot" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a class="brand" href="/" aria-label="SPORAMI, accueil"><img src="/logo-96.png" alt="" width="30" height="30"><span>SPORAMI</span></a>
+  <nav aria-label="Sections">
+    <a href="#facons">Façons de jouer</a>
+    <a href="#demo">Sport Drop</a>
+    <a href="#fiabilite">Fiabilité</a>
+    <a href="#confiance">Confiance</a>
+    <a href="#faq">Questions</a>
+  </nav>
+  <span class="nav-soon">Bientôt</span>
+</header>
+
 <main>
-<section class="hero">
-<p class="kicker">Sport · Rencontres · Confiance</p>
-<h1>Le sport,<br>mieux à plusieurs.</h1>
-<p class="lead">Rejoins une séance près de chez toi, organise la tienne, ou lance une séance mystère : tu ne connais l'équipe qu'en arrivant.</p>
-<div class="cta-row"><span class="btn dark">Bientôt sur l'App Store</span><a class="link" href="#fonctionnement">Découvrir</a></div>
-<div class="stage"><img class="hero-logo" id="heroLogo" src="/hero-logo.png" alt="Logo SPORAMI : deux mains qui se serrent" width="400" height="400"></div>
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <p class="kicker reveal-up" style="--d:.05s"><span class="kline"></span>Sport · Rencontres · Confiance<span class="kline"></span></p>
+  <h1 class="title" aria-label="Le sport, crée la rencontre.">
+    <span class="line"><span class="w" style="--d:.15s">Le</span> <span class="w" style="--d:.25s">sport,</span></span>
+    <span class="line l2"><span class="w" style="--d:.38s">crée</span> <span class="w" style="--d:.48s">la</span> <span class="w gold" style="--d:.58s">rencontre.</span></span>
+  </h1>
+  <p class="lead reveal-up" style="--d:.75s">Rejoins une séance près de chez toi, organise la tienne, ou lance un Sport&nbsp;Drop&nbsp;: une équipe de ton niveau, que tu découvres sur place.</p>
+  <div class="cta-row reveal-up" style="--d:.9s">
+    <span class="btn-gold magnet"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Bientôt sur l'App Store</span>
+    <a class="link" href="#facons">Découvrir</a>
+  </div>
+
+  <div class="stage reveal-up" id="stage" style="--d:1s">
+    <div class="halo" aria-hidden="true"></div>
+    <svg class="orbit-text" viewBox="0 0 600 600" aria-hidden="true">
+      <defs><path id="circ" d="M300,300 m-262,0 a262,262 0 1,1 524,0 a262,262 0 1,1 -524,0"/></defs>
+      <text><textPath href="#circ" id="orbitText">Football · Tennis · Padel · Running · Boxe anglaise · Natation · Basketball · Handball · Escalade · Yoga · Judo · Cyclisme · Volleyball · Rugby ·</textPath></text>
+    </svg>
+    <div class="ring-gold" aria-hidden="true"><i></i></div>
+    <div class="logo-wrap">
+      <div class="tilt" id="tilt">
+        <img class="hero-logo" src="/hero-logo.webp" alt="Logo SPORAMI : deux mains qui se serrent" width="720" height="720">
+        <div class="glare" aria-hidden="true"></div>
+      </div>
+    </div>
+    <div class="float f1" data-depth="26" aria-hidden="true"><span class="dot g"></span><div><b>Sport Drop</b><small>Équipe mystère</small></div></div>
+    <div class="float f2" data-depth="-20" aria-hidden="true"><span class="dot b"></span><div><b>Lieu public</b><small>confirmé</small></div></div>
+    <div class="float f3" data-depth="16" aria-hidden="true"><span class="dot w"></span><div><b>Fiabilité</b><small>Nouveau</small></div></div>
+  </div>
+  <a class="scroll-cue" href="#chiffres" aria-label="Faire défiler"><span></span></a>
 </section>
 
-<section class="sec rv" id="fonctionnement">
-<h2>Simple comme un rendez-vous.</h2>
-<p class="sub">Touche une étape pour voir ce qui se passe dans l'app.</p>
-<div class="tabs" role="tablist" id="tabs"></div>
-<div id="panels"></div>
+<!-- ============ CHIFFRES ============ -->
+<section class="stats rv" id="chiffres" aria-label="SPORAMI en chiffres">
+  <div class="stat"><b data-count="38">0</b><span>sports</span></div>
+  <div class="stat"><b data-count="5">0</b><span>niveaux par sport</span></div>
+  <div class="stat"><b data-count="3">0</b><span>façons de jouer</span></div>
+  <div class="stat"><b data-count="0" data-suffix="">0</b><span>publicité</span></div>
 </section>
 
-<section class="sec rv" id="fiabilite">
-<div class="bento">
-<div class="card night">
-<h3 class="eyebrow">Séance mystère</h3>
-<p class="big">Essaie-la ici.</p>
-<div class="phone"><div class="screen">
-<div class="chips" id="sports" role="group" aria-label="Sport"></div>
-<div class="chips" id="levels" role="group" aria-label="Niveau"></div>
-<div class="drop" aria-live="polite">
-<div class="drop-top"><span id="dTitle">Padel</span><span class="badge">Mystère</span></div>
-<small id="dSub" style="color:#6B7280">Niveau intermédiaire</small>
-<div class="who"><span class="av" id="av1">1</span><div><b id="n1">Participant</b><small>Intermédiaire · Nouveau</small></div></div>
-<div class="who"><span class="av" id="av2">2</span><div><b id="n2">Participant</b><small>Intermédiaire · Nouveau</small></div></div>
-<p class="hint" id="hint"></p>
-</div>
-<button class="btn" id="reveal" type="button">Rejoindre la séance</button>
-</div></div>
-</div>
-<div class="card pearl">
-<h3 class="eyebrow">Fiabilité</h3>
-<p class="big">Un score qui se mérite.</p>
-<p class="muted">Un nouveau est simplement « Nouveau ». Bouge les curseurs.</p>
-<div class="ring" id="ring" style="--p:0" role="img" aria-label="Score de fiabilité"><div><span id="rTxt">Nouveau<small>pas encore de séance</small></span></div></div>
-<label>Séances prévues <b id="vTot">0</b><input id="tot" type="range" min="0" max="20" value="0"></label>
-<label>Séances honorées <b id="vHon">0</b><input id="hon" type="range" min="0" max="20" value="0"></label>
-</div>
-</div>
+<!-- ============ SPORTS ============ -->
+<section class="marquee" aria-label="Sports disponibles dans SPORAMI">
+  <div class="mrow" id="mrow1"></div>
+  <div class="mrow rev" id="mrow2"></div>
 </section>
 
-<section class="sec rv" id="confiance">
-<h2>Aucune rencontre<br>dans le noir.</h2>
-<p class="sub">Les règles sont posées avant la première séance.</p>
-<div class="grid4">
-<div class="tile"><i></i><h3>Lieu public</h3><p>Toute séance est créée dans un lieu public, confirmé comme tel par l'organisateur.</p></div>
-<div class="tile"><i></i><h3>Signaler et bloquer</h3><p>Tu signales un message ou une personne et tu bloques un utilisateur : tu ne vois plus ses messages ni ses séances.</p></div>
-<div class="tile"><i></i><h3>Modération sous 24 h</h3><p>Chaque signalement est examiné sous 24 heures. Le contenu est retiré et son auteur peut être exclu.</p></div>
-<div class="tile"><i></i><h3>Tes données</h3><p>Aucune publicité, aucune revente. Ta position n'est pas enregistrée, ton e-mail n'est jamais visible.</p></div>
-</div>
+<!-- ============ 3 FAÇONS ============ -->
+<section class="sec" id="facons">
+  <div class="sec-head rv">
+    <p class="eyebrow">Trois façons de jouer</p>
+    <h2>Seul, en club<br>ou entre potes.</h2>
+  </div>
+  <div class="modes rv">
+    <div class="seg" role="tablist" aria-label="Type de séance" id="seg">
+      <span class="seg-ind" id="segInd" aria-hidden="true"></span>
+    </div>
+    <div class="mode-card" id="modeCard" aria-live="polite"></div>
+  </div>
 </section>
 
-<section class="sec rv" id="faq">
-<h2>Questions fréquentes.</h2>
-<div class="faq">
-<details><summary>SPORAMI est-il vraiment gratuit ?</summary><p>Oui. L'application est gratuite et sans publicité.</p></details>
-<details><summary>Sur quels appareils ça marche ?</summary><p>Sur iPhone, depuis l'App Store. Bientôt disponible.</p></details>
-<details><summary>Que voient les autres de moi ?</summary><p>Ton prénom, ton identifiant, tes sports et niveaux, ton nombre de séances et ta fiabilité. Ton e-mail et ta position ne sont jamais montrés. Dans une séance mystère, ton prénom reste caché.</p></details>
-<details><summary>Ma position est-elle enregistrée ?</summary><p>Non. Elle sert seulement sur ton téléphone à te montrer les lieux et clubs autour de toi.</p></details>
-<details><summary>Comment supprimer mon compte ?</summary><p>Dans l'app : Profil, Paramètres, Supprimer mon compte. Ton profil, tes clubs, tes contacts et tes séances sont supprimés immédiatement.</p></details>
-<details><summary>Quel âge faut-il avoir ?</summary><p>16 ans ou plus.</p></details>
-</div>
+<!-- ============ DEMO SPORT DROP ============ -->
+<section class="sec" id="demo">
+  <div class="demo rv">
+    <div class="demo-copy">
+      <p class="eyebrow gold">La spécialité SPORAMI</p>
+      <h2>Le Sport Drop.<br><span class="soft">Essaie-le ici.</span></h2>
+      <p class="sub">Choisis ton sport et ton niveau : SPORAMI forme une équipe de sportifs de ton niveau, près de chez toi. Les prénoms restent cachés. Tu découvres qui vient sur place.</p>
+      <ol class="flow" id="flow">
+        <li data-s="0"><span>1</span>Choisis ton sport et ton niveau</li>
+        <li data-s="1"><span>2</span>On forme l'équipe</li>
+        <li data-s="2"><span>3</span>L'équipe se complète, prénoms cachés</li>
+        <li data-s="3"><span>4</span>Rendez-vous dans un lieu public</li>
+        <li data-s="4"><span>5</span>Chacun confirme sa présence</li>
+      </ol>
+      <p class="note">Démonstration : aucune vraie séance, aucun vrai profil.</p>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone" id="phone">
+        <div class="island" aria-hidden="true"></div>
+        <div class="screen" id="screen" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="final rv"><h2>Une question ?<br>Écris-nous.</h2><p>On répond par e-mail.</p><a class="btn" href="mailto:contact.sporami@gmail.com">contact.sporami@gmail.com</a></section>
+<!-- ============ FIABILITE ============ -->
+<section class="sec" id="fiabilite">
+  <div class="rel rv">
+    <div class="rel-copy">
+      <p class="eyebrow">Fiabilité</p>
+      <h2>Un score<br>qui se mérite.</h2>
+      <p class="sub">Après chaque séance, les participants confirment qui est venu. Ta fiabilité, c'est la part des séances que tu as vraiment honorées. Un nouveau n'a pas de pourcentage : il est simplement « Nouveau ».</p>
+      <p class="sub small">Un désistement à moins de 24&nbsp;h de la séance est visible dans ta fiabilité.</p>
+    </div>
+    <div class="rel-card glow-card">
+      <div class="gauge" role="img" aria-label="Score de fiabilité" id="gauge">
+        <svg viewBox="0 0 220 220" aria-hidden="true">
+          <defs><linearGradient id="gGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE3A3"/><stop offset=".55" stop-color="#FFC266"/><stop offset="1" stop-color="#E58E2B"/></linearGradient></defs>
+          <circle cx="110" cy="110" r="92" class="g-track"/>
+          <circle cx="110" cy="110" r="92" class="g-bar" id="gBar"/>
+        </svg>
+        <div class="g-txt"><b id="gVal">Nouveau</b><small id="gSub">0 séance</small></div>
+      </div>
+      <div class="sliders">
+        <label><span>Séances prévues</span><b id="vTot">0</b><input id="tot" type="range" min="0" max="20" value="0"></label>
+        <label><span>Séances honorées</span><b id="vHon">0</b><input id="hon" type="range" min="0" max="20" value="0"></label>
+      </div>
+      <div class="presets" aria-label="Exemples">
+        <button type="button" data-t="0" data-h="0">Nouveau</button>
+        <button type="button" data-t="10" data-h="9">9 sur 10</button>
+        <button type="button" data-t="12" data-h="12">Parfait</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONFIANCE ============ -->
+<section class="sec" id="confiance">
+  <div class="sec-head rv">
+    <p class="eyebrow">Confiance</p>
+    <h2>Aucune rencontre<br>dans le noir.</h2>
+    <p class="sub">Les règles sont posées avant la première séance.</p>
+  </div>
+  <div class="trust rv">
+    <article class="glow-card t">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+      <h3>Lieu public obligatoire</h3>
+      <p>Impossible de publier une séance sans lieu public, confirmé comme tel par l'organisateur.</p>
+    </article>
+    <article class="glow-card t">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>
+      <h3>Signaler et bloquer</h3>
+      <p>Tu signales un message ou une personne, et tu bloques un utilisateur : tu ne vois plus ses messages ni ses séances.</p>
+    </article>
+    <article class="glow-card t">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg>
+      <h3>Modération sous 24&nbsp;h</h3>
+      <p>Chaque signalement est examiné sous 24 heures. Le contenu est retiré et son auteur peut être exclu.</p>
+    </article>
+    <article class="glow-card t">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+      <h3>Tes données</h3>
+      <p>Aucune publicité, aucune revente. Ta position n'est pas enregistrée, ton e-mail n'est jamais visible.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec" id="faq">
+  <div class="faq-grid">
+    <div class="sec-head rv">
+      <p class="eyebrow">Questions</p>
+      <h2>On te répond.</h2>
+      <p class="sub">Une autre question ? <a href="mailto:contact.sporami@gmail.com">contact.sporami@gmail.com</a></p>
+    </div>
+    <div class="faq rv">
+      <details><summary>SPORAMI est-il vraiment gratuit ?<i></i></summary><div class="a"><p>Oui. L'application est gratuite et sans publicité.</p></div></details>
+      <details><summary>C'est quoi, un Sport Drop ?<i></i></summary><div class="a"><p>Une séance mystère : tu choisis ton sport et ton créneau, SPORAMI forme une équipe de sportifs de ton niveau près de chez toi. Les prénoms restent cachés, tu découvres qui vient sur place.</p></div></details>
+      <details><summary>Sur quels appareils ça marche ?<i></i></summary><div class="a"><p>Sur iPhone, depuis l'App Store. Bientôt disponible.</p></div></details>
+      <details><summary>Que voient les autres de moi ?<i></i></summary><div class="a"><p>Ton prénom, ton identifiant, tes sports et niveaux, ton nombre de séances et ta fiabilité. Ton e-mail et ta position ne sont jamais montrés. Dans un Sport Drop, ton prénom reste caché.</p></div></details>
+      <details><summary>Ma position est-elle enregistrée ?<i></i></summary><div class="a"><p>Non. Elle sert seulement sur ton téléphone, à te montrer les lieux et clubs autour de toi.</p></div></details>
+      <details><summary>Comment supprimer mon compte ?<i></i></summary><div class="a"><p>Dans l'app : Profil, Paramètres, Supprimer mon compte. Ton profil, tes clubs, tes contacts et les séances que tu organises sont supprimés immédiatement.</p></div></details>
+      <details><summary>Quel âge faut-il avoir ?<i></i></summary><div class="a"><p>16 ans ou plus.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL ============ -->
+<section class="final rv">
+  <div class="final-halo" aria-hidden="true"></div>
+  <img class="final-logo" src="/hero-logo.webp" alt="" width="120" height="120">
+  <h2>Ta prochaine séance<br><span class="gold-txt">commence ici.</span></h2>
+  <p class="sub">SPORAMI arrive bientôt sur l'App Store.</p>
+  <div class="cta-row">
+    <span class="btn-gold magnet">Bientôt sur l'App Store</span>
+    <a class="btn-ghost magnet" href="mailto:contact.sporami@gmail.com">Nous écrire</a>
+  </div>
+</section>
 </main>
-<footer><p>© 2026 Simon Benedic · SPORAMI</p><p><a href="/confidentialite.html">Confidentialité</a> · <a href="/conditions.html">Conditions d'utilisation</a> · <a href="/support.html">Support</a> · <a href="mailto:contact.sporami@gmail.com">contact.sporami@gmail.com</a></p></footer>
-<script src="/app.js"></script></body></html>
+
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-brand"><a class="brand" href="/"><img src="/logo-96.png" alt="" width="28" height="28"><span>SPORAMI</span></a><p>Le sport crée la rencontre.</p></div>
+    <nav class="foot-links" aria-label="Informations">
+      <a href="/confidentialite.html">Confidentialité</a>
+      <a href="/conditions.html">Conditions d'utilisation</a>
+      <a href="/support.html">Support</a>
+      <a href="mailto:contact.sporami@gmail.com">contact.sporami@gmail.com</a>
+    </nav>
+  </div>
+  <p class="copy">© 2026 Simon Benedic · SPORAMI</p>
+</footer>
+<script src="/app.js"></script>
+</body>
+</html>
