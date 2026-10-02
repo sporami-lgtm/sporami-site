@@ -140,7 +140,7 @@ button{font:inherit;color:inherit}
 
 /* ---------- sections ---------- */
 .sec{max-width:1160px;margin:0 auto;padding:150px 20px 0}
-.sec-head{max-width:720px}
+.sec-head{max-width:960px}
 .eyebrow{margin:0 0 16px;font-size:13px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--peri)}
 .eyebrow.gold{color:var(--gold)}
 .sec h2,.final h2{margin:0 0 20px;font-size:clamp(40px,6.4vw,80px);line-height:1;letter-spacing:-.05em;font-weight:650;

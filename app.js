@@ -95,7 +95,7 @@ fill("mrow1",S1);fill("mrow2",S2);
 
 /* ---------- 3 façons de jouer (textes de l'app) ---------- */
 var MODES=[
- {id:"drop",tab:"Sport Drop",ic:I.spark,k:"LA SPÉCIALITÉ SPORAMI",t:"Fais du sport avec des inconnus",p:"Choisis ton sport et ton créneau : on forme une équipe de sportifs de ton niveau, près de chez toi. Tu découvres qui vient sur place !",
+ {id:"drop",tab:"Sport Drop",ic:I.spark,k:"LA SPÉCIALITÉ SPORAMI",t:"Rencontre de nouveaux sportifs",p:"Choisis ton sport et ton créneau : on forme une équipe de sportifs de ton niveau, près de chez toi. Tu découvres qui vient sur place !",
   s:[[I.run,"Choisis ton sport","Et ton créneau"],[I.team,"On forme l'équipe","De ton niveau, près de chez toi"],[I.quest,"Découvre qui vient","Sur place, dans un lieu public"]]},
  {id:"club",tab:"Club",ic:I.club,k:"AVEC TON CLUB",t:"Une séance avec ton club",p:"Propose un créneau aux membres de ton club : ils reçoivent l'invitation et rejoignent la séance en un clic.",
   s:[[I.club,"Choisis ton club",""],[I.cal,"Fixe le créneau",""],[I.team,"Les membres rejoignent","En un clic"]]},
@@ -133,7 +133,9 @@ var SPORTS=["Padel","Running","Football","Tennis","Basketball","Boxe anglaise"];
 var LEVELS=["Découverte","Débutant","Intermédiaire","Confirmé","Expert"];
 var D={sport:"Padel",level:"Intermédiaire",cap:4,st:0},timer=null;
 var scr=$("screen"),flowLis=qa("#flow li");
-function sbar(){return '<div class="sbar"><span>9:41</span><span class="ico"><i style="width:17px;height:10px;border-radius:2px;clip-path:polygon(0 70%,25% 70%,25% 50%,50% 50%,50% 25%,75% 25%,75% 0,100% 0,100% 100%,0 100%)"></i><i style="width:24px;height:11px;border-radius:3px;box-shadow:inset 0 0 0 1.5px #0B1020;background:linear-gradient(90deg,#0B1020 70%,transparent 70%);background-clip:content-box;padding:2px"></i></span></div>'}
+function clockText(){var d=new Date();return d.getHours()+":"+("0"+d.getMinutes()).slice(-2)}
+setInterval(function(){qa(".sbar .clock").forEach(function(c){c.textContent=clockText()})},15000);
+function sbar(){return '<div class="sbar"><span class="clock">'+clockText()+'</span><span class="ico"><i style="width:17px;height:10px;border-radius:2px;clip-path:polygon(0 70%,25% 70%,25% 50%,50% 50%,50% 25%,75% 25%,75% 0,100% 0,100% 100%,0 100%)"></i><i style="width:24px;height:11px;border-radius:3px;box-shadow:inset 0 0 0 1.5px #0B1020;background:linear-gradient(90deg,#0B1020 70%,transparent 70%);background-clip:content-box;padding:2px"></i></span></div>'}
 function chipRow(list,cur,key,gold){return '<div class="chips">'+list.map(function(x){return '<button type="button" class="chip'+(gold?" g":"")+'" data-k="'+key+'" data-v="'+x+'" aria-pressed="'+(String(x)===String(cur))+'">'+x+'</button>'}).join("")+'</div>'}
 function fmt(){return D.cap<=2?"Duo mystère":"Équipe mystère"}
 function render(){
@@ -178,8 +180,10 @@ render();
 /* ---------- fiabilité (même règle que l'app) ---------- */
 var tot=$("tot"),hon=$("hon"),gBar=$("gBar"),gVal=$("gVal"),gSub=$("gSub"),C=578.05,shown=0,anim=null;
 function setFill(el){var max=+el.max||1;el.style.setProperty("--fill",(max?el.value/max*100:0)+"%")}
-function rel(){
- var t=+tot.value;hon.max=t;var h=Math.min(+hon.value,t);hon.value=h;
+function rel(src){
+ var t=+tot.value,h=+hon.value;
+ // on ne peut pas honorer plus de séances que prévu : l'autre curseur suit
+ if(h>t){if(src==="hon"){t=h;tot.value=t}else{h=t;hon.value=h}}
  $("vTot").textContent=t;$("vHon").textContent=h;setFill(tot);setFill(hon);
  var p=t>0?Math.min(100,Math.floor(h/t*100)):null;
  gBar.style.strokeDashoffset=C*(1-(p||0)/100);
@@ -188,8 +192,8 @@ function rel(){
  var from=shown,t0=null;cancelAnimationFrame(anim);
  (function step(ts){if(!t0)t0=ts;var k=reduce?1:Math.min(1,(ts-t0)/700),e=1-Math.pow(1-k,3);shown=Math.round(from+(p-from)*e);gVal.textContent=shown+"\u00a0%";if(k<1)anim=requestAnimationFrame(step)})(performance.now());
 }
-tot.addEventListener("input",rel);hon.addEventListener("input",rel);
-qa(".presets button").forEach(function(b){b.addEventListener("click",function(){tot.value=b.getAttribute("data-t");hon.max=tot.value;hon.value=b.getAttribute("data-h");rel()})});
+tot.addEventListener("input",function(){rel("tot")});hon.addEventListener("input",function(){rel("hon")});
+qa(".presets button").forEach(function(b){b.addEventListener("click",function(){tot.value=b.getAttribute("data-t");hon.value=b.getAttribute("data-h");rel()})});
 rel();
 
 /* ---------- FAQ animée ---------- */
