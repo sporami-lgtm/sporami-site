@@ -132,10 +132,10 @@ button{font:inherit;color:inherit}
 .mrow.rev{animation-direction:reverse;animation-duration:80s}
 .marquee:hover .mrow{animation-play-state:paused}
 .mrow span{display:inline-flex;align-items:center;gap:30px;padding-right:30px;white-space:nowrap;
-  font-size:clamp(30px,4.6vw,60px);font-weight:650;letter-spacing:-.035em;line-height:1.15;color:transparent;-webkit-text-stroke:1px rgba(165,178,224,.38);transition:color .3s,-webkit-text-stroke-color .3s;cursor:default}
-.mrow span:nth-child(3n+2){color:rgba(243,246,255,.9);-webkit-text-stroke:0}
+  font-size:clamp(30px,4.6vw,60px);font-weight:650;letter-spacing:-.035em;line-height:1.15;color:#8FAEFF;transition:color .3s;cursor:default}
+.mrow span:nth-child(odd){color:#F3F6FF}
 .mrow span::after{content:"";width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px rgba(255,194,102,.8);flex:none}
-.mrow span:hover{color:var(--gold);-webkit-text-stroke-color:transparent}
+.mrow span:hover{color:var(--gold)}
 @keyframes slide{to{transform:translateX(-50%)}}
 
 /* ---------- sections ---------- */
