@@ -99,8 +99,8 @@ var MODES=[
   s:[[I.run,"Choisis ton sport","Et ton créneau"],[I.team,"On forme l'équipe","De ton niveau, près de chez toi"],[I.quest,"Découvre qui vient","Sur place, dans un lieu public"]]},
  {id:"club",tab:"Club",ic:I.club,k:"AVEC TON CLUB",t:"Une séance avec ton club",p:"Propose un créneau aux membres de ton club : ils reçoivent l'invitation et rejoignent la séance en un clic.",
   s:[[I.club,"Choisis ton club",""],[I.cal,"Fixe le créneau",""],[I.team,"Les membres rejoignent","En un clic"]]},
- {id:"amis",tab:"Amis",ic:I.friends,k:"AVEC TES POTES",t:"Une séance entre potes",p:"Choisis le sport, l'heure et le lieu, puis invite tes amis. Vous vous organisez ensemble dans le chat de la séance.",
-  s:[[I.run,"Choisis ton sport","L'heure et le lieu"],[I.plane,"Invite tes potes",""],[I.pin,"Rendez-vous sur place","Organisés dans le chat"]]}
+ {id:"amis",tab:"Amis",ic:I.friends,k:"AVEC TES AMIS",t:"Une séance entre amis",p:"Choisis le sport, l'heure et le lieu, puis invite tes amis. Vous vous organisez ensemble dans le chat de la séance.",
+  s:[[I.run,"Choisis ton sport","L'heure et le lieu"],[I.plane,"Invite tes amis",""],[I.pin,"Rendez-vous sur place","Organisés dans le chat"]]}
 ];
 var seg=$("seg"),ind=$("segInd"),card=$("modeCard"),btns=[];
 MODES.forEach(function(m,i){
