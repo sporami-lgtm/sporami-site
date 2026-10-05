@@ -69,7 +69,7 @@
     </div>
     <div class="float f1" data-depth="26" aria-hidden="true"><span class="dot g"></span><div><b>Sport Drop</b><small>Équipe mystère</small></div></div>
     <div class="float f2" data-depth="-20" aria-hidden="true"><span class="dot b"></span><div><b>Lieu public</b><small>confirmé</small></div></div>
-    <div class="float f3" data-depth="16" aria-hidden="true"><span class="dot w"></span><div><b>Fiabilité</b><small>Nouveau</small></div></div>
+    <div class="float f3" data-depth="16" aria-hidden="true"><span class="dot w"></span><div><b>Fiabilité</b><small>vérifiée après chaque séance</small></div></div>
   </div>
   <a class="scroll-cue" href="#chiffres" aria-label="Faire défiler"><span></span></a>
 </section>
@@ -108,13 +108,13 @@
     <div class="demo-copy">
       <p class="eyebrow gold">La spécialité SPORAMI</p>
       <h2>Le Sport Drop.<br><span class="soft">Essaie-le ici.</span></h2>
-      <p class="sub">Choisis ton sport et ton niveau : SPORAMI forme une équipe de sportifs de ton niveau, près de chez toi. Les prénoms restent cachés. Tu découvres qui vient sur place.</p>
+      <p class="sub">Crée une séance mystère : des sportifs près de chez toi la rejoignent, sans voir les prénoms. Tu découvres qui vient sur place. Voici les vrais écrans de l'appli.</p>
       <ol class="flow" id="flow">
-        <li data-s="0"><span>1</span>Choisis ton sport et ton niveau</li>
-        <li data-s="1"><span>2</span>On forme l'équipe</li>
-        <li data-s="2"><span>3</span>L'équipe se complète, prénoms cachés</li>
-        <li data-s="3"><span>4</span>Rendez-vous dans un lieu public</li>
-        <li data-s="4"><span>5</span>Chacun confirme sa présence</li>
+        <li data-s="0" role="button" tabindex="0"><span>1</span>Crée ton Sport Drop : sport, niveau, qui peut venir</li>
+        <li data-s="1" role="button" tabindex="0"><span>2</span>Il apparaît dans Mes séances et chez les sportifs autour de toi</li>
+        <li data-s="2" role="button" tabindex="0"><span>3</span>D'autres le rejoignent, prénoms cachés</li>
+        <li data-s="3" role="button" tabindex="0"><span>4</span>Le point de rendez-vous est donné dans le chat</li>
+        <li data-s="4" role="button" tabindex="0"><span>5</span>Après la séance, chacun dit qui était là</li>
       </ol>
       <p class="note">Démonstration : aucune vraie séance, aucun vrai profil.</p>
     </div>
@@ -122,6 +122,11 @@
       <div class="phone" id="phone">
         <div class="island" aria-hidden="true"></div>
         <div class="screen" id="screen" aria-live="polite"></div>
+      </div>
+      <div class="demo-ctl">
+        <button type="button" id="dPrev" aria-label="Écran précédent">‹</button>
+        <span id="dStep">Écran 1 sur 5</span>
+        <button type="button" id="dNext" aria-label="Écran suivant">›</button>
       </div>
     </div>
   </div>
@@ -133,8 +138,8 @@
     <div class="rel-copy">
       <p class="eyebrow">Fiabilité</p>
       <h2>Un score<br>qui se mérite.</h2>
-      <p class="sub">Après chaque séance, les participants confirment qui est venu. Ta fiabilité, c'est la part des séances que tu as vraiment honorées. Un nouveau n'a pas de pourcentage : il est simplement « Nouveau ».</p>
-      <p class="sub small">Un désistement à moins de 24&nbsp;h de la séance est visible dans ta fiabilité.</p>
+      <p class="sub">Après chaque séance, les participants indiquent qui était là. Ta fiabilité, c'est la part des séances où tu es vraiment venu, sur celles où tu étais inscrit. Avant ta première séance, tu n'as pas encore de note.</p>
+      <p class="sub small">Tu ne peux plus venir ? Désinscris-toi avant la séance : seules les absences sans prévenir comptent.</p>
     </div>
     <div class="rel-card glow-card">
       <div class="gauge" role="img" aria-label="Score de fiabilité" id="gauge">
@@ -143,14 +148,14 @@
           <circle cx="110" cy="110" r="92" class="g-track"/>
           <circle cx="110" cy="110" r="92" class="g-bar" id="gBar"/>
         </svg>
-        <div class="g-txt"><b id="gVal">Nouveau</b><small id="gSub">0 séance</small></div>
+        <div class="g-txt"><b id="gVal">–</b><small id="gSub">pas encore noté</small></div>
       </div>
       <div class="sliders">
-        <label><span>Séances prévues</span><b id="vTot">0</b><input id="tot" type="range" min="0" max="20" value="0"></label>
-        <label><span>Séances honorées</span><b id="vHon">0</b><input id="hon" type="range" min="0" max="20" value="0"></label>
+        <label><span>Séances où tu étais inscrit</span><b id="vTot">0</b><input id="tot" type="range" min="0" max="20" value="0"></label>
+        <label><span>Séances où tu es venu</span><b id="vHon">0</b><input id="hon" type="range" min="0" max="20" value="0"></label>
       </div>
       <div class="presets" aria-label="Exemples">
-        <button type="button" data-t="0" data-h="0">Nouveau</button>
+        <button type="button" data-t="0" data-h="0">Aucune séance</button>
         <button type="button" data-t="10" data-h="9">9 sur 10</button>
         <button type="button" data-t="12" data-h="12">Parfait</button>
       </div>
