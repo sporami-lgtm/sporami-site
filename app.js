@@ -86,9 +86,9 @@ if("IntersectionObserver" in window&&!reduce){
  rvs.forEach(function(e){io.observe(e)});
 }else{rvs.forEach(function(e){e.classList.add("in")});qa("[data-count]").forEach(count)}
 
-/* ---------- défilé des 38 sports de l'app ---------- */
-var S1=["Football","Tennis","Padel","Running","Basketball","Boxe anglaise","Natation","Musculation","Handball","Escalade","Yoga","Judo","Cyclisme","Volleyball","Rugby","Badminton","Fitness","Randonnée","MMA"];
-var S2=["Futsal","Cross-training","Karaté","Squash","Tennis de table","Golf","Pilates","Kick-boxing","Danse","Hockey","Athlétisme","Taekwondo","VTT","Aviron","Marche","Lutte","Roller","Jiu-jitsu brésilien","Skateboard"];
+/* ---------- défilé des 124 sports de l'app ---------- */
+var S1=["Football","Tennis","Padel","Running","Basketball","Boxe anglaise","Natation","Musculation","Handball","Escalade","Yoga","Judo","Cyclisme","Volleyball","Rugby","Badminton","Fitness","Randonnée","MMA","Street workout","Powerlifting","Trampoline","Marche nordique","Tai-chi","Foot à 5","Basket 3x3","Hockey sur glace","Football américain","Baseball","Cricket","Lacrosse","Netball","Tchoukball","Dodgeball","Pickleball","Pelote basque","Boxe thaï","Grappling","Krav-maga","Aïkido","Arts martiaux vietnamiens","Kendo","Natation en eau libre","Water-polo","Rafting","Planche à voile","Surf","Stand up paddle","Ski nautique","Apnée","Course d'orientation","Triathlon","Spéléologie","Équitation","Tir à l'arc","Pétanque","Billard","Curling","Ski","Ski de randonnée","Patinage","Paintball"];
+var S2=["Futsal","Cross-training","Karaté","Squash","Tennis de table","Golf","Pilates","Kick-boxing","Danse","Hockey","Athlétisme","Taekwondo","VTT","Aviron","Marche","Lutte","Roller","Jiu-jitsu brésilien","Skateboard","Haltérophilie","Gymnastique","Parkour","Vélo en salle","Zumba","Beach soccer","Beach-volley","Roller hockey","Flag football","Softball","Ultimate frisbee","Floorball","Korfball","Kin-ball","Teqball","Beach tennis","Boxe française","Ju-jitsu","Sambo","Self-défense","Kung-fu","Capoeira","Escrime","Aquagym","Canoë-kayak","Voile","Kitesurf","Bodyboard","Wakeboard","Plongée","Trail","BMX","Alpinisme","Parapente","Disc golf","Tir sportif","Bowling","Fléchettes","Trottinette","Ski de fond","Snowboard","Karting","Accrobranche"];
 function fill(id,list){var el=$(id);if(!el)return;var h=list.concat(list).map(function(s){return "<span>"+s+"</span>"}).join("");el.innerHTML=h;
  qa("span",el).forEach(function(s,i){if(i>=list.length)s.setAttribute("aria-hidden","true")})}
 fill("mrow1",S1);fill("mrow2",S2);
