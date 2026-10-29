@@ -1,7 +1,7 @@
 /* SPORAMI — pages Sports, guides, Support, Confidentialité, Conditions, Mentions légales (v1.3) */
-@font-face{font-family:"Big Shoulders";src:url("/fonts/big-shoulders-700.woff") format("woff");font-weight:700;font-style:normal;font-display:swap}
-@font-face{font-family:"Instrument Sans";src:url("/fonts/instrument-sans-400.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:"Instrument Sans";src:url("/fonts/instrument-sans-700.woff") format("woff");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Big Shoulders";src:url("/big-shoulders-700.woff") format("woff");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Instrument Sans";src:url("/instrument-sans-400.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Instrument Sans";src:url("/instrument-sans-700.woff") format("woff");font-weight:700;font-style:normal;font-display:swap}
 :root{--night:#040A26;--night2:#071338;--night3:#0B1C52;--chalk:#F3F6FF;--mist:#AAB6DD;--dim:#8391C2;--line:rgba(243,246,255,.11);--line2:rgba(243,246,255,.22);
   --blue:#0066FF;--ice:#9CC8FF;--gold:#FFC266;--gold2:#FFE3A3;--gold3:#E58E2B;
   --display:"Big Shoulders","Arial Narrow","Roboto Condensed",system-ui,sans-serif;--text:"Instrument Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,system-ui,sans-serif}
