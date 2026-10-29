@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://sporami.app/</loc><lastmod>2026-10-14</lastmod><priority>1.0</priority></url>
-  <url><loc>https://sporami.app/support.html</loc><lastmod>2026-10-02</lastmod><priority>0.6</priority></url>
-  <url><loc>https://sporami.app/confidentialite.html</loc><lastmod>2026-10-14</lastmod><priority>0.4</priority></url>
-  <url><loc>https://sporami.app/conditions.html</loc><lastmod>2026-10-04</lastmod><priority>0.4</priority></url>
+  <url><loc>https://sporami.app/</loc><lastmod>2026-10-28</lastmod><priority>1.0</priority></url>
+  <url><loc>https://sporami.app/support.html</loc><lastmod>2026-10-28</lastmod><priority>0.6</priority></url>
+  <url><loc>https://sporami.app/confidentialite.html</loc><lastmod>2026-10-28</lastmod><priority>0.4</priority></url>
+  <url><loc>https://sporami.app/conditions.html</loc><lastmod>2026-10-28</lastmod><priority>0.4</priority></url>
+  <url><loc>https://sporami.app/mentions-legales.html</loc><lastmod>2026-10-28</lastmod><priority>0.3</priority></url>
+  <url><loc>https://sporami.app/partenaire-foot.html</loc><lastmod>2026-10-28</lastmod><priority>0.7</priority></url>
+  <url><loc>https://sporami.app/partenaire-tennis.html</loc><lastmod>2026-10-28</lastmod><priority>0.7</priority></url>
+  <url><loc>https://sporami.app/partenaire-padel.html</loc><lastmod>2026-10-28</lastmod><priority>0.7</priority></url>
+  <url><loc>https://sporami.app/partenaire-running.html</loc><lastmod>2026-10-28</lastmod><priority>0.7</priority></url>
+  <url><loc>https://sporami.app/partenaire-musculation.html</loc><lastmod>2026-10-28</lastmod><priority>0.7</priority></url>
+  <url><loc>https://sporami.app/sport-entre-filles.html</loc><lastmod>2026-10-28</lastmod><priority>0.7</priority></url>
+  <url><loc>https://sporami.app/sport-paris.html</loc><lastmod>2026-10-28</lastmod><priority>0.7</priority></url>
+  <url><loc>https://sporami.app/rencontrer-des-gens-par-le-sport.html</loc><lastmod>2026-10-28</lastmod><priority>0.7</priority></url>
+  <url><loc>https://sporami.app/sports.html</loc><lastmod>2026-10-28</lastmod><priority>0.8</priority></url>
 </urlset>
