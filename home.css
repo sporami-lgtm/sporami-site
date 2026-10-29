@@ -135,7 +135,7 @@ main,.foot{position:relative;z-index:1}
 @keyframes phoneInBack{from{opacity:0;transform:translateZ(-110px) translateY(110px) rotateY(44deg) rotateX(10deg) rotateZ(-5deg)}to{opacity:1;transform:translateZ(-110px) rotateY(24deg) rotateX(4deg) rotateZ(-5deg)}}
 
 /* Le ticket du Sport Drop, devant les téléphones */
-.ticket-shadow{position:absolute;left:-2%;bottom:7%;width:min(400px,78%);filter:drop-shadow(0 30px 34px rgba(0,0,0,.55));
+.ticket-shadow{position:absolute;left:-2%;bottom:5%;width:min(400px,78%);filter:drop-shadow(0 30px 34px rgba(0,0,0,.55));
   transform:translateZ(150px) rotate(-5deg);animation:drop 1.1s var(--spring) .7s both}
 @keyframes drop{0%{opacity:0;transform:translateZ(150px) translateY(-90px) rotate(-14deg)}60%{opacity:1}100%{opacity:1;transform:translateZ(150px) rotate(-5deg)}}
 @keyframes dropM{0%{opacity:0;transform:translateZ(60px) translateY(-70px) rotate(-12deg)}60%{opacity:1}100%{opacity:1;transform:translateZ(60px) rotate(-4deg)}}
@@ -504,7 +504,9 @@ main,.foot{position:relative;z-index:1}
 
 /* ---------- v1.3 : écran de bienvenue avec la vidéo de l'appli ---------- */
 .wel{--u:calc(100cqw / 390);position:absolute;inset:0;overflow:hidden;background:#030720 url(/accueil-video.webp) center 30%/cover no-repeat;color:#fff;font-family:var(--ios);text-align:center}
-.wel-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;-webkit-transform:translateZ(0);transform:translateZ(0)}
+.wel-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;-webkit-transform:translateZ(0);transform:translateZ(0);opacity:0;transition:opacity .5s}
+.wel-vid.is-on{opacity:1}
+@media (prefers-reduced-motion:reduce){.wel-vid{opacity:1}}
 .wel-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,7,32,.45) 0,transparent 16%,transparent 44%,rgba(3,7,32,.55) 60%,rgba(3,7,32,.9) 76%,#030720 92%)}
 .wel-logo{position:absolute;top:calc(var(--u)*62);left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:calc(var(--u)*9);padding:calc(var(--u)*6) calc(var(--u)*15) calc(var(--u)*6) calc(var(--u)*6);border-radius:99px;background:rgba(255,255,255,.12);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16);font-weight:900;font-size:calc(var(--u)*18);letter-spacing:.09em}
 .wel-logo img{width:calc(var(--u)*28);height:calc(var(--u)*28);border-radius:calc(var(--u)*8)}

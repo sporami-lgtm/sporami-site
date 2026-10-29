@@ -166,25 +166,27 @@
     if (anim && !reduce && ticket.animate) ticket.animate([{ transform: "translateY(6px) rotate(-1deg)", opacity: .6 }, { transform: "none", opacity: 1 }], { duration: 380, easing: "cubic-bezier(.2,.8,.2,1)" });
   }
   types.forEach(function (b) {
-    b.addEventListener("click", function () { if (typeAuto) { clearInterval(typeAuto); typeAuto = null; } setType(b.getAttribute("data-type"), true); });
+    b.addEventListener("click", function () { stopAuto(); setType(b.getAttribute("data-type"), true); });
   });
-  // Les trois types de séance défilent tout seuls sur le ticket, jusqu'à ce qu'on en choisisse un
-  if (!reduce && ticket) typeAuto = setInterval(function () {
-    var i = typeOrder.indexOf(ticket.getAttribute("data-type"));
-    setType(typeOrder[(i + 1) % 3], true);
-  }, 3200);
   var tSport = $("tSport"), tLevel = $("tLevel"), chips = all(".picker-sport button");
-  chips.forEach(function (chip) {
-    chip.addEventListener("click", function () {
-      chips.forEach(function (c) { c.setAttribute("aria-pressed", String(c === chip)); });
-      tSport.textContent = chip.getAttribute("data-sport");
-      tLevel.textContent = chip.getAttribute("data-level") || "Le tien";
-      if (!reduce && tSport.animate) {
-        tSport.animate([{ opacity: 0, transform: "translateY(12px)", filter: "blur(4px)" }, { opacity: 1, transform: "none", filter: "none" }],
-          { duration: 320, easing: "cubic-bezier(.2,.8,.2,1)" });
-      }
-    });
-  });
+  function setSport(chip, anim) {
+    chips.forEach(function (c) { c.setAttribute("aria-pressed", String(c === chip)); });
+    tSport.textContent = chip.getAttribute("data-sport");
+    tLevel.textContent = chip.getAttribute("data-level") || "Le tien";
+    if (anim && !reduce && tSport.animate) {
+      tSport.animate([{ opacity: 0, transform: "translateY(12px)", filter: "blur(4px)" }, { opacity: 1, transform: "none", filter: "none" }],
+        { duration: 320, easing: "cubic-bezier(.2,.8,.2,1)" });
+    }
+  }
+  function stopAuto() { if (typeAuto) { clearInterval(typeAuto); typeAuto = null; } }
+  chips.forEach(function (chip) { chip.addEventListener("click", function () { stopAuto(); setSport(chip, true); }); });
+  // Le ticket change tout seul : un autre sport et un autre type de séance à chaque fois, jusqu'à ce qu'on touche un bouton
+  var step = 0;
+  if (!reduce && ticket && chips.length) typeAuto = setInterval(function () {
+    step++;
+    setType(typeOrder[step % 3], true);
+    setSport(chips[step % chips.length], true);
+  }, 3200);
 
   /* ---------- Sport Drop : l'écran du téléphone suit l'étape lue ---------- */
   var steps = all(".step"), scrs = all(".story-stage .scr"), dots = all(".story-dots i"), phoneStory = document.querySelector(".phone-story");
@@ -212,6 +214,7 @@
     vid.muted = true; vid.setAttribute("muted", "");
     var tryPlay = function () { var p = vid.play(); if (p && p.catch) p.catch(function () {}); };
     vid.addEventListener("loadeddata", tryPlay); tryPlay();
+    vid.addEventListener("timeupdate", function () { if (vid.currentTime > 0.1) vid.classList.add("is-on"); });
     document.addEventListener("visibilitychange", function () { if (!document.hidden) tryPlay(); });
   }
 
