@@ -172,6 +172,7 @@
   function setSport(chip, anim) {
     chips.forEach(function (c) { c.setAttribute("aria-pressed", String(c === chip)); });
     tSport.textContent = chip.getAttribute("data-sport");
+    tSport.classList.toggle("is-long", tSport.textContent.length > 10);
     tLevel.textContent = chip.getAttribute("data-level") || "Le tien";
     if (anim && !reduce && tSport.animate) {
       tSport.animate([{ opacity: 0, transform: "translateY(12px)", filter: "blur(4px)" }, { opacity: 1, transform: "none", filter: "none" }],

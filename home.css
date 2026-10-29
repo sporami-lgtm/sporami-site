@@ -109,20 +109,20 @@ main,.foot{position:relative;z-index:1}
 .stage-glow{position:absolute;left:8%;right:0;top:6%;bottom:8%;pointer-events:none;border-radius:50%;
   background:radial-gradient(closest-side,rgba(46,107,255,.55),rgba(46,107,255,.16) 55%,transparent),radial-gradient(40% 30% at 70% 30%,rgba(255,194,102,.25),transparent 70%);filter:blur(10px);animation:breathe 8s ease-in-out infinite}
 @keyframes breathe{50%{transform:scale(1.05);opacity:.85}}
-.rig{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform}
+.rig{position:absolute;inset:0;transform-style:flat;perspective:1500px;perspective-origin:50% 40%;will-change:transform}
 .floor{position:absolute;left:12%;right:4%;bottom:2%;height:60px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.55),transparent);filter:blur(6px)}
 
 /* iPhone en CSS : cadre en titane, épaisseur, reflet */
-.phone{--w:290px;position:absolute;width:var(--w);aspect-ratio:1/2.094;transform-style:preserve-3d}
+.phone{--w:290px;position:absolute;width:var(--w);aspect-ratio:1/2.094;transform-style:flat}
 .phone-body,.phone-edge{position:absolute;inset:0;border-radius:calc(var(--w)*.165)}
-.phone-edge{transform:translateZ(-14px);background:linear-gradient(90deg,#141a2c,#525d7a 18%,#1b2236 50%,#59647f 82%,#141a2c)}
+.phone-edge{display:none;background:linear-gradient(90deg,#141a2c,#525d7a 18%,#1b2236 50%,#59647f 82%,#141a2c)}
 .phone-body{padding:calc(var(--w)*.034);
   background:linear-gradient(150deg,#6b7694 0%,#252d46 14%,#0b1020 45%,#1f2740 80%,#7a86a6 100%);
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.26),inset 0 0 0 calc(var(--w)*.013) #04060d,0 50px 80px -30px rgba(0,0,0,.85)}
 .phone-body::before,.phone-body::after{content:"";position:absolute;width:calc(var(--w)*.012);border-radius:3px;background:linear-gradient(90deg,#1b2236,#59647f)}
 .phone-body::before{right:calc(var(--w)*-.01);top:26%;height:12%}
 .phone-body::after{left:calc(var(--w)*-.01);top:21%;height:7%;box-shadow:0 calc(var(--w)*.2) 0 #3a4460}
-.phone-screen{position:relative;width:100%;height:100%;overflow:hidden;border-radius:calc(var(--w)*.135);background:#000;container-type:inline-size;isolation:isolate;-webkit-mask-image:-webkit-radial-gradient(white,black);-webkit-transform:translateZ(0)}
+.phone-screen{position:relative;width:100%;height:100%;overflow:hidden;border-radius:calc(var(--w)*.135);background:#000;container-type:inline-size;isolation:isolate}
 .phone-screen picture,.phone-screen img{width:100%;height:100%}
 .phone-screen img{object-fit:cover}
 .phone-glare{position:absolute;inset:calc(var(--w)*.034);border-radius:calc(var(--w)*.135);pointer-events:none;
@@ -135,7 +135,7 @@ main,.foot{position:relative;z-index:1}
 @keyframes phoneInBack{from{opacity:0;transform:translateZ(-110px) translateY(110px) rotateY(44deg) rotateX(10deg) rotateZ(-5deg)}to{opacity:1;transform:translateZ(-110px) rotateY(24deg) rotateX(4deg) rotateZ(-5deg)}}
 
 /* Le ticket du Sport Drop, devant les téléphones */
-.ticket-shadow{position:absolute;left:-2%;bottom:5%;width:min(400px,78%);filter:drop-shadow(0 30px 34px rgba(0,0,0,.55));
+.ticket-shadow{position:absolute;left:-2%;bottom:8%;width:min(400px,78%);filter:drop-shadow(0 30px 34px rgba(0,0,0,.55));
   transform:translateZ(150px) rotate(-5deg);animation:drop 1.1s var(--spring) .7s both}
 @keyframes drop{0%{opacity:0;transform:translateZ(150px) translateY(-90px) rotate(-14deg)}60%{opacity:1}100%{opacity:1;transform:translateZ(150px) rotate(-5deg)}}
 @keyframes dropM{0%{opacity:0;transform:translateZ(60px) translateY(-70px) rotate(-12deg)}60%{opacity:1}100%{opacity:1;transform:translateZ(60px) rotate(-4deg)}}
@@ -150,9 +150,10 @@ main,.foot{position:relative;z-index:1}
 .t-tag{padding:5px 11px;border-radius:999px;background:var(--tc);color:#fff;white-space:nowrap;transition:background .4s}
 .t-kind{color:var(--ink2)}
 .t-sport{margin:12px 0 14px;font:700 clamp(46px,4.4vw,62px)/.88 var(--display);letter-spacing:-.01em;overflow-wrap:anywhere}
-.t-facts{display:grid;grid-template-columns:repeat(2,auto);justify-content:start;gap:4px 26px;margin:0}
+.t-facts{display:grid;grid-template-columns:repeat(2,auto);justify-content:start;gap:4px 18px;margin:0}
 .t-facts dt{font-size:12px;font-weight:700;color:var(--ink2)}
-.t-facts dd{margin:2px 0 0;font-size:15px;font-weight:700;line-height:1.25}
+.t-facts dd{margin:2px 0 0;font-size:15px;font-weight:700;line-height:1.25;white-space:nowrap}
+.t-sport.is-long{font-size:.8em;font-size:clamp(36px,3.5vw,50px)}
 .t-stub{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px 10px;text-align:center;color:rgba(255,255,255,.85);font-size:12px;line-height:1.3;background:linear-gradient(165deg,var(--tc1),var(--tc2));transition:background .4s}
 .t-stub b{display:block;color:#fff;font-size:13.5px}
 .t-team{display:flex}
@@ -189,6 +190,7 @@ main,.foot{position:relative;z-index:1}
   .t-main{padding:14px 12px 14px 15px}
   .t-kind{display:none}
   .t-sport{font-size:40px}
+  .t-sport.is-long{font-size:32px}
   .t-facts{grid-template-columns:1fr;gap:2px}
   .t-facts div{display:flex;align-items:baseline;gap:8px}
   .t-facts dd{font-size:13.5px}
@@ -201,6 +203,7 @@ main,.foot{position:relative;z-index:1}
   .ticket-shadow{width:88%;left:2%}
   .ticket{--stub:72px;--notch:9px}
   .t-sport{font-size:36px}
+  .t-sport.is-long{font-size:29px}
   .t-tag{font-size:12px;padding:4px 9px}
   .t-facts dd{font-size:12.5px}
   .t-team span{width:22px;height:22px;font-size:13px;margin-left:-7px}
@@ -504,7 +507,7 @@ main,.foot{position:relative;z-index:1}
 
 /* ---------- v1.3 : écran de bienvenue avec la vidéo de l'appli ---------- */
 .wel{--u:calc(100cqw / 390);position:absolute;inset:0;overflow:hidden;background:#030720 url(/accueil-video.webp) center 30%/cover no-repeat;color:#fff;font-family:var(--ios);text-align:center}
-.wel-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;-webkit-transform:translateZ(0);transform:translateZ(0);opacity:0;transition:opacity .5s}
+.wel-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:0;transition:opacity .5s}
 .wel-vid.is-on{opacity:1}
 @media (prefers-reduced-motion:reduce){.wel-vid{opacity:1}}
 .wel-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,7,32,.45) 0,transparent 16%,transparent 44%,rgba(3,7,32,.55) 60%,rgba(3,7,32,.9) 76%,#030720 92%)}
