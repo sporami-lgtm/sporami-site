@@ -150,7 +150,30 @@
   }
 
   /* ---------- ticket du Sport Drop : le sport choisi s'affiche dessus ---------- */
-  var tSport = $("tSport"), tLevel = $("tLevel"), chips = all(".picker button");
+  var ticket = $("ticket"), tTag = $("tTag"), tKind = $("tKind"), tTeam = $("tTeam"), tWho = $("tWho"), types = all(".picker-type button");
+  var PERSON = '<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4.2"/><path d="M3.8 21c.6-4.4 4-7 8.2-7s7.6 2.6 8.2 7z"/></svg>';
+  var TYPES = {
+    drop: ["Sport Drop", "Près de chez toi", "<span>?</span><span>?</span><span>?</span>", "<b>Équipe mystère</b>découverte sur place"],
+    club: ["Club ou BDS", "Membres prévenus", "<span>" + PERSON + "</span><span>" + PERSON + "</span><span>" + PERSON + "</span>", "<b>Entre membres</b>de ton club ou BDS"],
+    amis: ["Amis", "Sur invitation", "<span>" + PERSON + "</span><span>" + PERSON + "</span><span>" + PERSON + "</span>", "<b>Entre amis</b>ceux que tu invites"]
+  };
+  var typeOrder = ["drop", "club", "amis"], typeAuto = null;
+  function setType(k, anim) {
+    var t = TYPES[k]; if (!t || !ticket) return;
+    ticket.setAttribute("data-type", k);
+    tTag.textContent = t[0]; tKind.textContent = t[1]; tTeam.innerHTML = t[2]; tWho.innerHTML = t[3];
+    types.forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-type") === k)); });
+    if (anim && !reduce && ticket.animate) ticket.animate([{ transform: "translateY(6px) rotate(-1deg)", opacity: .6 }, { transform: "none", opacity: 1 }], { duration: 380, easing: "cubic-bezier(.2,.8,.2,1)" });
+  }
+  types.forEach(function (b) {
+    b.addEventListener("click", function () { if (typeAuto) { clearInterval(typeAuto); typeAuto = null; } setType(b.getAttribute("data-type"), true); });
+  });
+  // Les trois types de séance défilent tout seuls sur le ticket, jusqu'à ce qu'on en choisisse un
+  if (!reduce && ticket) typeAuto = setInterval(function () {
+    var i = typeOrder.indexOf(ticket.getAttribute("data-type"));
+    setType(typeOrder[(i + 1) % 3], true);
+  }, 3200);
+  var tSport = $("tSport"), tLevel = $("tLevel"), chips = all(".picker-sport button");
   chips.forEach(function (chip) {
     chip.addEventListener("click", function () {
       chips.forEach(function (c) { c.setAttribute("aria-pressed", String(c === chip)); });
@@ -184,6 +207,13 @@
   /* ---------- vidéo de l'écran de bienvenue : arrêtée si « réduire les animations » ---------- */
   var vid = document.querySelector(".wel-vid");
   if (vid && reduce) { vid.removeAttribute("autoplay"); vid.pause(); }
+  // Safari peut bloquer la lecture auto : on relance quand la vidéo est prête et à l'écran
+  if (vid && !reduce) {
+    vid.muted = true; vid.setAttribute("muted", "");
+    var tryPlay = function () { var p = vid.play(); if (p && p.catch) p.catch(function () {}); };
+    vid.addEventListener("loadeddata", tryPlay); tryPlay();
+    document.addEventListener("visibilitychange", function () { if (!document.hidden) tryPlay(); });
+  }
 
   /* ---------- écussons : toucher pour voir la condition, inclinaison au survol ---------- */
   var info = $("badgeInfo"), badges = all(".badge");
