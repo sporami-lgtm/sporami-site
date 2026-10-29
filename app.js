@@ -133,7 +133,7 @@
       cx = lerp(cx, tx, 0.07); cy = lerp(cy, ty, 0.07);
       var r = hero.getBoundingClientRect();
       var k = Math.max(0, Math.min(1, -r.top / Math.max(1, r.height)));
-      rig.style.transform = "rotateX(" + (cy * -7 + k * 10).toFixed(3) + "deg) rotateY(" + (cx * 9).toFixed(3) + "deg) translateY(" + (k * -40).toFixed(2) + "px)";
+      rig.style.transform = "translate(" + (cx * 10).toFixed(2) + "px," + (cy * 8 + k * -40).toFixed(2) + "px)";
       if (Math.abs(cx - tx) > 0.001 || Math.abs(cy - ty) > 0.001) requestAnimationFrame(tick); else ticking = false;
     }
     function kick() { if (!ticking) { ticking = true; requestAnimationFrame(tick); } }
@@ -169,10 +169,18 @@
     b.addEventListener("click", function () { stopAuto(); setType(b.getAttribute("data-type"), true); });
   });
   var tSport = $("tSport"), tLevel = $("tLevel"), chips = all(".picker-sport button");
+  // Le nom du sport tient toujours sur une ligne : la taille s'adapte à la largeur du ticket
+  function fitSport() {
+    tSport.style.fontSize = "";
+    var s = parseFloat(getComputedStyle(tSport).fontSize);
+    while (tSport.scrollWidth > tSport.clientWidth + 1 && s > 18) { s -= 2; tSport.style.fontSize = s + "px"; }
+  }
+  addEventListener("resize", function () { fitSport(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitSport);
   function setSport(chip, anim) {
     chips.forEach(function (c) { c.setAttribute("aria-pressed", String(c === chip)); });
     tSport.textContent = chip.getAttribute("data-sport");
-    tSport.classList.toggle("is-long", tSport.textContent.length > 10);
+    fitSport();
     tLevel.textContent = chip.getAttribute("data-level") || "Le tien";
     if (anim && !reduce && tSport.animate) {
       tSport.animate([{ opacity: 0, transform: "translateY(12px)", filter: "blur(4px)" }, { opacity: 1, transform: "none", filter: "none" }],
@@ -215,7 +223,6 @@
     vid.muted = true; vid.setAttribute("muted", "");
     var tryPlay = function () { var p = vid.play(); if (p && p.catch) p.catch(function () {}); };
     vid.addEventListener("loadeddata", tryPlay); tryPlay();
-    vid.addEventListener("timeupdate", function () { if (vid.currentTime > 0.1) vid.classList.add("is-on"); });
     document.addEventListener("visibilitychange", function () { if (!document.hidden) tryPlay(); });
   }
 
