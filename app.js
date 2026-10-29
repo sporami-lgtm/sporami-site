@@ -171,12 +171,19 @@
     dots.forEach(function (d, j) { d.classList.toggle("on", j === i); });
     if (phoneStory && !reduce) phoneStory.style.transform = "rotateY(" + (i % 2 ? 10 : -12) + "deg) rotateX(4deg)";
   }
-  if ("IntersectionObserver" in window && steps.length) {
-    var so = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) setStep(+e.target.getAttribute("data-i")); });
-    }, { rootMargin: "-48% 0px -48% 0px" });
-    steps.forEach(function (s) { so.observe(s); });
+  // Les étapes sont courtes : les écrans défilent tout seuls quand la partie est à l'écran, et on peut toucher une étape
+  var cur = 0, auto = null, storyOn = false;
+  steps.forEach(function (s, i) { s.addEventListener("click", function () { cur = i; setStep(i); }); });
+  if (!reduce && steps.length && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (es) {
+      storyOn = es[0].isIntersecting;
+      clearInterval(auto);
+      if (storyOn) auto = setInterval(function () { cur = (cur + 1) % steps.length; setStep(cur); }, 2800);
+    }, { threshold: 0.35 }).observe(document.querySelector(".story"));
   }
+  /* ---------- vidéo de l'écran de bienvenue : arrêtée si « réduire les animations » ---------- */
+  var vid = document.querySelector(".wel-vid");
+  if (vid && reduce) { vid.removeAttribute("autoplay"); vid.pause(); }
 
   /* ---------- écussons : toucher pour voir la condition, inclinaison au survol ---------- */
   var info = $("badgeInfo"), badges = all(".badge");
