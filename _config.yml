@@ -1,0 +1,2 @@
+# Site statique : le dossier .well-known doit être publié (liens d'invitation et d'événements)
+include: [".well-known"]
