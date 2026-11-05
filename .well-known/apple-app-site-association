@@ -9,7 +9,8 @@
         ],
         "paths": [
           "/rejoindre*",
-          "/evenement*"
+          "/evenement*",
+          "/club*"
         ],
         "components": [
           {
@@ -19,6 +20,10 @@
           {
             "/": "/evenement*",
             "comment": "Événements des clubs (affiche, QR code)"
+          },
+          {
+            "/": "/club*",
+            "comment": "QR code d'un club : ses activités"
           }
         ]
       }
