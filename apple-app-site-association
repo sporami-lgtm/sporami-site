@@ -1,0 +1,37 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "8245TY562L.com.simonbenedic.Sporami",
+        "appIDs": [
+          "8245TY562L.com.simonbenedic.Sporami"
+        ],
+        "paths": [
+          "/rejoindre*",
+          "/evenement*",
+          "/club*",
+          "/email-verifie*"
+        ],
+        "components": [
+          {
+            "/": "/rejoindre*",
+            "comment": "Liens d'invitation (clubs et sections)"
+          },
+          {
+            "/": "/evenement*",
+            "comment": "Événements des clubs (affiche, QR code)"
+          },
+          {
+            "/": "/club*",
+            "comment": "QR code d'un club : ses activités"
+          },
+          {
+            "/": "/email-verifie*",
+            "comment": "Retour dans l'appli après la vérification de l'e-mail"
+          }
+        ]
+      }
+    ]
+  }
+}

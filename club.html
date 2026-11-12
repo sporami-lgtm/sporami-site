@@ -51,5 +51,9 @@ a:focus-visible{outline:2px solid #FFC266;outline-offset:3px}
   <p class="how">Une fois l’appli installée, <b>touche à nouveau ce lien</b> (ou scanne le QR code) pour voir les activités du club.</p>
   <a class="home" href="/">Découvrir SPORAMI</a>
 </main>
+<script>
+// Sur iPhone : si cette page s'affiche, l'appli n'est pas installée (sinon le lien l'aurait ouverte) -> direct à l'App Store
+if (/iPhone|iPad|iPod/.test(navigator.userAgent)) { setTimeout(function () { location.replace("https://apps.apple.com/fr/app/sporami/id6819085786"); }, 400); }
+</script>
 </body>
 </html>
