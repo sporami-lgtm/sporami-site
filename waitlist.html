@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SPORAMI – Le sport crée la rencontre</title>
+<meta name="description" content="SPORAMI : trouve des partenaires, rejoins des séances et suis tes progrès. Tous les sports, tous les niveaux. Inscris-toi pour être informé du lancement de l’application.">
+<meta name="theme-color" content="#040A26">
+<meta name="color-scheme" content="dark">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src https://europe-west1-sporami-65043.cloudfunctions.net; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SPORAMI">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="SPORAMI – Le sport crée la rencontre">
+<meta property="og:description" content="Trouve des partenaires, rejoins des séances et suis tes progrès. Sois parmi les premiers à rejoindre SPORAMI.">
+<meta property="og:url" content="https://sporami.app/">
+<meta property="og:image" content="https://sporami.app/og-waitlist.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SPORAMI : le sport crée la rencontre">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sporami.app/og-waitlist.jpg">
+<link rel="canonical" href="https://sporami.app/">
+<link rel="icon" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/big-shoulders-700.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/instrument-sans-400.woff" as="font" type="font/woff" crossorigin>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","@id":"https://sporami.app/#org","name":"SPORAMI","url":"https://sporami.app/","logo":"https://sporami.app/icon.png","email":"contact.sporami@gmail.com","sameAs":["https://www.instagram.com/sporami.app/"]}
+</script>
+<style>
+@font-face{font-family:"Big Shoulders";src:url("/big-shoulders-700.woff") format("woff");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Instrument Sans";src:url("/instrument-sans-400.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Instrument Sans";src:url("/instrument-sans-700.woff") format("woff");font-weight:700;font-style:normal;font-display:swap}
+
+/* Mêmes couleurs, polices et boutons que sporami.app (home.css) */
+:root{
+  --night:#040A26;--night2:#08123A;--night3:#0F1B55;
+  --chalk:#F3F6FF;--mist:#AAB5DD;--dim:#8390C2;
+  --line:rgba(243,246,255,.10);--line2:rgba(243,246,255,.22);
+  --electric:#2E6BFF;--peri:#9DB9FF;
+  --flood:#FFC266;--flood2:#FFE3A3;--flood3:#E58E2B;
+  --error:#FF8DAA;
+  --display:"Big Shoulders","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
+  --text:"Instrument Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,system-ui,sans-serif;
+  --pad:20px;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  /* hauteur de la frise : suit la hauteur de l'écran pour que tout le formulaire reste visible */
+  --fh:clamp(96px,16svh,150px);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;background:var(--night)}
+body{margin:0;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;color:var(--chalk);font:400 16px/1.45 var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:clip;
+  background:radial-gradient(90% 50% at 50% 18%,rgba(46,107,255,.30),transparent 70%),linear-gradient(180deg,var(--night3),var(--night) 70%);background-color:var(--night)}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+p{margin:0}
+h1,h2{margin:0;font-weight:700}
+::selection{background:rgba(255,194,102,.35);color:#fff}
+:focus-visible{outline:2px solid var(--flood);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:12px;top:-80px;z-index:10;padding:10px 14px;border-radius:10px;background:var(--flood);color:#1B1203;font-weight:700;text-decoration:none}
+.skip:focus{top:12px}
+
+/* ---------- frise de photos (les photos des sports de l'appli) ---------- */
+.frieze{position:relative;height:calc(var(--fh) + max(10px,env(safe-area-inset-top)));padding-top:max(10px,env(safe-area-inset-top));overflow:hidden;
+  -webkit-mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.track{display:flex;gap:8px;width:max-content;height:var(--fh);animation:defile 48s linear infinite}
+.tile{position:relative;flex:none;margin:0;width:calc(var(--fh) * .68);height:100%;border-radius:14px;overflow:hidden;background:var(--night2);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.tile img{width:100%;height:100%;object-fit:cover}
+.tile span{position:absolute;left:8px;bottom:7px;z-index:1;font:700 13px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.7)}
+.tile::after{content:"";position:absolute;inset:50% 0 0;background:linear-gradient(180deg,transparent,rgba(4,10,38,.8))}
+@keyframes defile{to{transform:translateX(calc(-50% - 4px))}}
+
+/* ---------- contenu ---------- */
+main{flex:1;width:100%;max-width:640px;margin:0 auto;padding:clamp(10px,2.4svh,28px) var(--pad) 18px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.soon{display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:999px;color:var(--mist);font-size:12.5px;font-weight:700;line-height:1.2;
+  background:rgba(255,255,255,.05);box-shadow:inset 0 0 0 1px var(--line)}
+.soon i{width:7px;height:7px;border-radius:50%;background:var(--flood);box-shadow:0 0 10px var(--flood);flex:none}
+h1{display:flex;align-items:center;justify-content:center;gap:.16em;margin-top:clamp(8px,1.6svh,18px);font:700 clamp(52px,min(calc(21vw - 10px),11svh),150px)/.86 var(--display);letter-spacing:.035em}
+h1 img{width:.74em;height:.74em;border-radius:.2em;box-shadow:0 0 0 1px rgba(255,255,255,.14),0 10px 30px rgba(30,80,255,.6)}
+h1 span{background:linear-gradient(180deg,#fff 40%,#C7D4FF);-webkit-background-clip:text;background-clip:text;color:transparent;padding-top:.06em}
+.tagline{margin-top:clamp(4px,1svh,10px);font:700 clamp(25px,min(7.6vw,4.2svh),40px)/1 var(--display);letter-spacing:.01em;color:var(--flood)}
+.lead{margin-top:8px;max-width:30em;color:var(--mist);font-size:clamp(15px,1.4vw,17px)}
+
+.join{width:100%;max-width:440px;margin-top:clamp(14px,2.6svh,28px)}
+.join h2{font:700 17px/1.3 var(--text)}
+.join .hint{margin-top:2px;color:var(--mist);font-size:14.5px}
+form{margin-top:12px}
+.field{display:flex;flex-direction:column;gap:10px}
+.lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+input[type=email]{width:100%;height:54px;padding:0 18px;border:0;border-radius:16px;color:var(--chalk);font:400 17px var(--text);text-align:left;
+  background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px var(--line2);-webkit-appearance:none;appearance:none;transition:box-shadow .2s,background .2s}
+input[type=email]::placeholder{color:var(--dim)}
+input[type=email]:focus{outline:none;background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 2px var(--flood)}
+input[type=email][aria-invalid=true]{box-shadow:inset 0 0 0 2px var(--error)}
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;width:100%;height:54px;padding:0 24px;border:0;border-radius:999px;overflow:hidden;cursor:pointer;
+  color:#1B1203;font:700 17px/1.2 var(--text);
+  background:linear-gradient(135deg,var(--flood2),var(--flood) 50%,var(--flood3));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 16px 40px -14px rgba(255,170,60,.85),0 0 0 1px rgba(255,214,140,.45);transition:box-shadow .3s var(--ease),transform .15s var(--ease)}
+.btn::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;transform:skewX(-20deg);pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);animation:shine 5s ease-in-out 2.4s infinite}
+@keyframes shine{0%{left:-60%}20%,100%{left:130%}}
+.btn:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 22px 50px -14px rgba(255,170,60,.95),0 0 0 1px rgba(255,214,140,.65)}
+.btn:active{transform:scale(.985)}
+.btn svg{width:18px;height:18px;flex:none}
+.btn[aria-busy=true]{cursor:progress}
+.btn[aria-busy=true]::after{display:none}
+.btn .spin{display:none;width:18px;height:18px;border-radius:50%;border:2px solid rgba(27,18,3,.25);border-top-color:#1B1203;animation:turn .8s linear infinite}
+.btn[aria-busy=true] .spin{display:block}
+.btn[aria-busy=true] svg{display:none}
+@keyframes turn{to{transform:rotate(360deg)}}
+.age{display:inline-flex;align-items:center;justify-content:center;gap:10px;color:var(--chalk);font-size:15px;line-height:1.3;cursor:pointer}
+.age input{position:absolute;opacity:0;width:1px;height:1px}
+.box{flex:none;width:22px;height:22px;border-radius:7px;background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1.5px var(--line2);display:grid;place-items:center;transition:background .15s,box-shadow .15s}
+.box svg{width:14px;height:14px;opacity:0;transform:scale(.6);transition:opacity .15s,transform .15s var(--ease)}
+.age input:checked+.box{background:var(--flood);box-shadow:none}
+.age input:checked+.box svg{opacity:1;transform:none}
+.age input:focus-visible+.box{outline:2px solid var(--flood);outline-offset:3px}
+.age input[aria-invalid=true]+.box{box-shadow:inset 0 0 0 2px var(--error)}
+.err{color:var(--error);font-size:14px;font-weight:700}
+.err:empty{display:none}
+.legal{margin-top:10px;color:var(--dim);font-size:12.5px;line-height:1.45}
+.legal a{color:var(--mist);text-underline-offset:2px}
+.trap{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
+
+/* États après l'envoi */
+.state{display:none}
+.state:focus{outline:none}
+.state h2{font:700 clamp(28px,4vw,36px)/1 var(--display);text-wrap:balance}
+.state p{margin-top:8px;color:var(--mist);font-size:15.5px}
+.state p b{color:var(--chalk);overflow-wrap:anywhere}
+.state .tick{width:44px;height:44px;margin:0 auto 12px;border-radius:50%;display:grid;place-items:center;background:var(--flood);box-shadow:0 10px 30px -10px rgba(255,170,60,.9)}
+.state .tick svg{width:22px;height:22px}
+.linkbtn{margin-top:14px;padding:0;border:0;background:none;color:var(--mist);font:700 15px var(--text);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.linkbtn:hover{color:var(--chalk)}
+.insta{display:inline-flex;align-items:center;gap:10px;margin-top:18px;padding:14px 20px;border-radius:999px;color:var(--chalk);font-weight:700;font-size:16px;text-decoration:none;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px var(--line2);transition:background .2s}
+.insta:hover{background:rgba(255,255,255,.11)}
+.insta svg{width:19px;height:19px}
+[data-state=sent] #form-area,[data-state=done] #form-area{display:none}
+[data-state=sent] #sent,[data-state=done] #done{display:block}
+
+/* ---------- bas de page ---------- */
+footer{width:100%;max-width:1160px;margin:0 auto;padding:14px var(--pad) max(18px,env(safe-area-inset-bottom));color:var(--dim);font-size:12.5px;line-height:1.6;border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:2px 16px;justify-content:center;text-align:center}
+footer nav{display:flex;flex-wrap:wrap;justify-content:center;gap:2px 14px}
+footer a{color:var(--mist);text-decoration:none}
+footer a:hover{color:var(--chalk);text-decoration:underline;text-underline-offset:3px}
+
+/* Apparition douce */
+.rise{animation:rise .8s var(--ease) both}
+.rise.d1{animation-delay:.07s}.rise.d2{animation-delay:.14s}.rise.d3{animation-delay:.21s}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* Petits écrans en hauteur (iPhone SE, navigateur d'Instagram) : on resserre pour garder tout le formulaire visible */
+@media (max-height:720px){
+  :root{--fh:clamp(84px,14svh,110px)}
+  .join .hint{display:none}
+  .lead{font-size:14.5px;margin-top:6px}
+  input[type=email],.btn{height:50px}
+  .legal{margin-top:8px;font-size:12px}
+}
+@media (max-height:580px){
+  :root{--fh:76px}
+  h1{font-size:clamp(54px,17vw,64px);margin-top:6px}
+  .tagline{font-size:24px}
+  .lead{font-size:14px;line-height:1.35}
+  .join{margin-top:10px}
+  .join h2{font-size:15.5px}
+  form{margin-top:8px}
+  .field{gap:8px}
+  input[type=email],.btn{height:48px}
+  .soon{padding:5px 10px;font-size:12px}
+}
+@media (min-width:900px){
+  :root{--fh:clamp(150px,22vh,230px);--pad:32px}
+  .track{gap:12px}
+  .tile{border-radius:18px}
+  .tile span{font-size:16px;left:12px;bottom:10px}
+  .lead{margin-top:12px}
+  .join h2{font-size:18px}
+}
+@media (prefers-reduced-motion:reduce){
+  .track,.rise,.btn::after,.btn .spin{animation:none}
+}
+@media (forced-colors:active){
+  h1 span{color:CanvasText;background:none}
+  .btn{border:2px solid ButtonText}
+  .box{border:1px solid CanvasText}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#email">Aller au formulaire</a>
+
+<div class="frieze" aria-hidden="true">
+  <div class="track">
+    <figure class="tile"><img src="/sport-foot.webp" alt="" width="240" height="371" decoding="async"><span>Foot</span></figure>
+    <figure class="tile"><img src="/sport-tennis.webp" alt="" width="240" height="371" decoding="async"><span>Tennis</span></figure>
+    <figure class="tile"><img src="/sport-running.webp" alt="" width="240" height="371" decoding="async"><span>Running</span></figure>
+    <figure class="tile"><img src="/sport-muscu.webp" alt="" width="240" height="371" decoding="async"><span>Muscu</span></figure>
+    <figure class="tile"><img src="/sport-padel.webp" alt="" width="240" height="371" decoding="async"><span>Padel</span></figure>
+    <figure class="tile"><img src="/sport-basket.webp" alt="" width="240" height="371" decoding="async"><span>Basket</span></figure>
+    <figure class="tile"><img src="/sport-natation.webp" alt="" width="240" height="371" decoding="async"><span>Natation</span></figure>
+    <figure class="tile"><img src="/sport-boxe.webp" alt="" width="240" height="371" decoding="async"><span>Boxe</span></figure>
+    <figure class="tile"><img src="/sport-velo.webp" alt="" width="240" height="371" decoding="async"><span>Vélo</span></figure>
+    <figure class="tile"><img src="/sport-yoga.webp" alt="" width="240" height="371" decoding="async"><span>Yoga</span></figure>
+    <figure class="tile"><img src="/sport-workout.webp" alt="" width="240" height="371" decoding="async"><span>Street workout</span></figure>
+    <figure class="tile"><img src="/sport-martial.webp" alt="" width="240" height="371" decoding="async"><span>Arts martiaux</span></figure>
+    <!-- même série une deuxième fois : la frise boucle sans coupure -->
+    <figure class="tile"><img src="/sport-foot.webp" alt="" width="240" height="371" decoding="async"><span>Foot</span></figure>
+    <figure class="tile"><img src="/sport-tennis.webp" alt="" width="240" height="371" decoding="async"><span>Tennis</span></figure>
+    <figure class="tile"><img src="/sport-running.webp" alt="" width="240" height="371" decoding="async"><span>Running</span></figure>
+    <figure class="tile"><img src="/sport-muscu.webp" alt="" width="240" height="371" decoding="async"><span>Muscu</span></figure>
+    <figure class="tile"><img src="/sport-padel.webp" alt="" width="240" height="371" decoding="async"><span>Padel</span></figure>
+    <figure class="tile"><img src="/sport-basket.webp" alt="" width="240" height="371" decoding="async"><span>Basket</span></figure>
+    <figure class="tile"><img src="/sport-natation.webp" alt="" width="240" height="371" decoding="async"><span>Natation</span></figure>
+    <figure class="tile"><img src="/sport-boxe.webp" alt="" width="240" height="371" decoding="async"><span>Boxe</span></figure>
+    <figure class="tile"><img src="/sport-velo.webp" alt="" width="240" height="371" decoding="async"><span>Vélo</span></figure>
+    <figure class="tile"><img src="/sport-yoga.webp" alt="" width="240" height="371" decoding="async"><span>Yoga</span></figure>
+    <figure class="tile"><img src="/sport-workout.webp" alt="" width="240" height="371" decoding="async"><span>Street workout</span></figure>
+    <figure class="tile"><img src="/sport-martial.webp" alt="" width="240" height="371" decoding="async"><span>Arts martiaux</span></figure>
+  </div>
+</div>
+
+<main id="contenu">
+  <p class="soon rise"><i aria-hidden="true"></i>L’application arrive bientôt</p>
+  <h1 class="rise d1"><img src="/logo-96.png" alt="" width="96" height="96"><span>SPORAMI</span></h1>
+  <p class="tagline rise d1">Le sport crée la rencontre.</p>
+  <p class="lead rise d2">Trouve des partenaires, rejoins des séances et suis tes progrès. Tous les sports, tous les niveaux.</p>
+
+  <section class="join rise d3" id="join" aria-labelledby="join-title">
+    <div id="form-area">
+      <h2 id="join-title">Sois parmi les premiers à rejoindre SPORAMI.</h2>
+      <p class="hint">Inscris-toi pour être informé du lancement de l’application.</p>
+
+      <form id="waitlist" novalidate>
+        <div class="field">
+          <label class="lbl" for="email">Adresse e-mail</label>
+          <input id="email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="send"
+                 maxlength="254" required placeholder="Adresse e-mail" aria-describedby="form-error legal">
+          <label class="age" for="adult">
+            <input id="adult" name="adult" type="checkbox" required aria-describedby="form-error">
+            <span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#1B1203" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+            <span>J’ai 18 ans ou plus.</span>
+          </label>
+          <p class="err" id="form-error" role="alert" aria-live="assertive"></p>
+          <button class="btn" type="submit" id="submit">
+            <span class="label">Me prévenir du lancement</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <span class="spin" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="trap" aria-hidden="true">
+          <label for="website">Ne pas remplir</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <p class="legal" id="legal">Ton e-mail sert uniquement à te prévenir du lancement. Désinscription en un clic. <a href="/confidentialite.html#liste-attente">Tes données</a></p>
+      </form>
+      <noscript><p class="legal">Pour t’inscrire, active JavaScript ou écris-nous à <a href="mailto:contact.sporami@gmail.com">contact.sporami@gmail.com</a>.</p></noscript>
+    </div>
+
+    <div class="state" id="sent" tabindex="-1" aria-labelledby="sent-title">
+      <div class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#1B1203" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l8 6 8-6"/><rect x="3" y="5" width="18" height="14" rx="3"/></svg></div>
+      <h2 id="sent-title">Vérifie ta boîte mail pour confirmer ton inscription !</h2>
+      <p>Un lien de confirmation vient de partir vers <b id="sent-email"></b>. Pas reçu d’ici quelques minutes ? Regarde dans les spams ou l’onglet Promotions.</p>
+      <button class="linkbtn" type="button" id="again">Utiliser une autre adresse</button>
+    </div>
+
+    <div class="state" id="done" tabindex="-1" aria-labelledby="done-title">
+      <div class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#1B1203" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+      <h2 id="done-title">Bienvenue dans l’aventure SPORAMI !</h2>
+      <p>Ton inscription est confirmée. Tu seras informé dès le lancement.</p>
+      <a class="insta" href="https://www.instagram.com/sporami.app/" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        Suivre SPORAMI sur Instagram
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 Simon Benedic · SPORAMI · Réservé aux 18 ans et plus</p>
+  <nav aria-label="Informations">
+    <a href="/confidentialite.html">Confidentialité</a>
+    <a href="/mentions-legales.html">Mentions légales</a>
+    <a href="mailto:contact.sporami@gmail.com">contact.sporami@gmail.com</a>
+  </nav>
+</footer>
+
+<script src="/waitlist.js" defer></script>
+</body>
+</html>
